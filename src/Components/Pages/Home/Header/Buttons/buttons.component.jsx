@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+import "./buttons.scss";
 
 export const Buttons = () => {
   return (
-    <div className="ms-auto">
+    <div className="d-flex align-items-center ms-auto">
       <div>
-        <select defaultValue="">
+        <select className="filter" defaultValue="">
           <option value="" disabled>
             Filter by status
           </option>
@@ -13,9 +13,9 @@ export const Buttons = () => {
           <option value="paid">Paid</option>
         </select>
       </div>
-      <div>
-        <button>
-          <Link to={"/add-invoice"}>Add</Link>
+      <div className="ms-4">
+        <button className="add_btn d-flex align-items-center">
+          <div className="el_btn me-3"></div>New invoice
         </button>
       </div>
     </div>
