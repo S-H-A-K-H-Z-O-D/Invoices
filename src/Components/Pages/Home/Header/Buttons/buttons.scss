@@ -4,13 +4,48 @@
 }
 
 .filter {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  @include filter_style;
+  position: relative;
 
-  & > option {
+  &__btn {
+    background-color: transparent;
+    border: none;
     @include filter_style;
+    margin-right: 30px;
+    padding-bottom: 10px;
+    position: relative;
+
+    &__up_to_down {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: url(../../../../../img/upToDown.png) no-repeat;
+      background-size: 100% 100%;
+      top: 8px;
+      right: -22px;
+    }
+
+    &__down_to_up {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: url(../../../../../img/down_to_up.jpg) no-repeat;
+      background-size: 100% 100%;
+      top: 8px;
+      right: -22px;
+    }
+  }
+
+  &__list {
+    position: absolute;
+    background-color: #fff;
+    font-weight: 700;
+    width: 160px;
+    padding: 12px;
+    left: -20px;
+    border-radius: 8px;
+    box-shadow: 0px 10px 20px rgba(72, 84, 159, 0.25);
   }
 }
 

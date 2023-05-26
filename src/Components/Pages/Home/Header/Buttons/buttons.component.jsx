@@ -1,17 +1,38 @@
+import { useState } from "react";
 import "./buttons.scss";
 
 export const Buttons = () => {
+  const [list, setList] = useState(false);
+
+  const chooseOption = () => {
+    setList(!list);
+  };
+
   return (
     <div className="d-flex align-items-center ms-auto">
-      <div>
-        <select className="filter" defaultValue="">
-          <option value="" disabled>
-            Filter by status
-          </option>
-          <option value="all">All</option>
-          <option value="pending">Pending</option>
-          <option value="paid">Paid</option>
-        </select>
+      <div className="filter">
+        <button onClick={chooseOption} className="filter__btn">
+          Filter by status
+          {list ? (
+            <span className="filter__btn__down_to_up"></span>
+          ) : (
+            <span className="filter__btn__up_to_down"></span>
+          )}
+        </button>
+
+        {list ? (
+          <ul className="list-unstyled ps-3 filter__list">
+            <li>
+              <input type="checkbox" /> All
+            </li>
+            <li>
+              <input type="checkbox" /> Pending
+            </li>
+            <li>
+              <input type="checkbox" /> Paid
+            </li>
+          </ul>
+        ) : null}
       </div>
       <div className="ms-4">
         <button className="add_btn d-flex align-items-center">
