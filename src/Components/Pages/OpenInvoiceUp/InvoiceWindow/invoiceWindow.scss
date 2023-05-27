@@ -1,0 +1,41 @@
+.blank {
+  background-color: #fff;
+  border-radius: 10px;
+  margin-top: 30px;
+
+  & p {
+    margin-bottom: 0;
+  }
+
+  &__code {
+    font-weight: 700;
+    & > span {
+      color: #7e88c3;
+    }
+
+    & ~ p {
+      color: #7e88c3;
+    }
+  }
+
+  &__info p {
+    color: #7e88c3;
+  }
+
+  &__money {
+    background-color: #373b53;
+    padding: 24px 35px;
+    border-radius: 10px;
+    margin-top: 30px;
+
+    &__text {
+      color: #fff;
+    }
+
+    &__amount {
+      color: #fff;
+      font-size: 27px;
+      font-weight: 600;
+    }
+  }
+}

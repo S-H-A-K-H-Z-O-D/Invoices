@@ -18,14 +18,13 @@ export const Header = () => {
 
       <div className="mt-5 head__invoices_wrapper">
         <Invoices />
+        {/* <div className="d-flex flex-column align-items-center no_invoice">
+          <h4 className="fw-bold">There is nothing here</h4>
+          <p>
+            Create an invoice by clicking the New Invoice button and get started
+          </p>
+        </div> */}
       </div>
-
-      {/* <div className="d-flex flex-column align-items-center no_invoice">
-        <h4 className="fw-bold">There is nothing here</h4>
-        <p>
-          Create an invoice by clicking the New Invoice button and get started
-        </p>
-      </div> */}
     </div>
   );
 };

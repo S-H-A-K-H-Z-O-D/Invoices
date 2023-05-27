@@ -3,7 +3,6 @@
   padding-top: 13px;
   padding-left: 40px;
   background-color: $bgColor;
-  font-size: 13px;
   font-weight: 700;
   color: $color;
   border-radius: 7px;
@@ -17,12 +16,12 @@
     border-radius: 50%;
     background-color: $color;
     left: 25px;
-    top: 18px;
+    top: 20px;
   }
 }
 
 .invoice {
-  height: 92px;
+  height: 97px;
 
   &__card {
     background-color: white;
@@ -45,7 +44,6 @@
 
     & > p:nth-child(1) {
       font-weight: bold;
-      font-size: 13px;
 
       & span {
         color: #858bb2;
@@ -55,7 +53,6 @@
     & > p:nth-child(2),
     p:nth-child(3) {
       color: #858bb2;
-      font-size: 13px;
     }
 
     &__paid {
@@ -66,4 +63,8 @@
       @include invoiceStatus(#ff8f0015, #ff8f00);
     }
   }
+}
+
+.status {
+  @include invoiceStatus(#ff8f0015, #ff8f00);
 }

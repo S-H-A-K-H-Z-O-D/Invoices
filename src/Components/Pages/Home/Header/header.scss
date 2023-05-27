@@ -1,7 +1,4 @@
 .head {
-  padding: 50px 280px;
-  padding-right: 360px;
-
   &__invoices_wrapper {
     height: 450px;
     overflow: auto;
@@ -10,5 +7,4 @@
 
 .invoice_counter {
   color: #888eb0;
-  font-size: 13px;
 }
