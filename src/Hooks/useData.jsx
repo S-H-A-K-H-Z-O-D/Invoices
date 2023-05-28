@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { DataContext } from "../Contexts/data";
 
 export const useData = () => {
-  const { data } = useContext(DataContext);
+  const { data, id, setId, info, setInfo } = useContext(DataContext);
 
-  return [data];
+  return [data, id, setId, info, setInfo];
 };

@@ -1,16 +1,22 @@
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useData } from "../../../Hooks/useData";
 import "./invoice.scss";
 
 export const Invoices = () => {
   const goInvoice = useNavigate();
-  const elId = useRef();
-  const [data] = useData();
+  const [data, id, setId, info, setInfo] = useData();
   console.log(data);
 
   const onNavigate = (evt) => {
-    console.log(elId.current);
+    setId(evt.target.closest("button").id);
+    fetch(
+      `https://invoices-8ehs.onrender.com/invoices/${
+        evt.target.closest("button").id
+      }`
+    )
+      .then((res) => res.json())
+      .then((data) => setInfo(data));
     goInvoice("/open-invoice-up");
   };
 
@@ -19,7 +25,6 @@ export const Invoices = () => {
       {data.map((el) => (
         <li key={el.id} className="invoice">
           <button
-            ref={elId}
             id={el.id}
             onClick={onNavigate}
             className="w-100 d-flex justify-content-between align-items-center invoice__card"

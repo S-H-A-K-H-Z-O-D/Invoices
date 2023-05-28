@@ -65,6 +65,10 @@
   }
 }
 
-.status {
+.status_pending {
   @include invoiceStatus(#ff8f0015, #ff8f00);
+}
+
+.status_paid {
+  @include invoiceStatus(#33d6a015, #33d69f);
 }
