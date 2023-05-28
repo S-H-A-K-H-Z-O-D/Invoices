@@ -1,11 +1,15 @@
-@mixin btnStyle($bgColor, $color) {
+@mixin btnStyle($bgColor, $color, $bgColorHover) {
   border: none;
   background-color: $bgColor;
-  padding: 14px 25px;
+  padding: 12px 22px;
   border-radius: 40px;
   color: $color;
   font-weight: 700;
   margin-left: 10px;
+
+  &:hover {
+    background-color: $bgColorHover;
+  }
 }
 
 .goBack {
@@ -20,10 +24,14 @@
     content: "";
     width: 7px;
     height: 10px;
-    background: url(../../../img/goBack.png) no-repeat;
+    background: url(../../img/goBack.png) no-repeat;
     background-size: 100% 100%;
     left: 0;
     top: 7px;
+  }
+
+  &:hover {
+    color: #7e88c3;
   }
 }
 
@@ -40,13 +48,22 @@
 
   &__btns > button {
     &:nth-child(1) {
-      @include btnStyle(#f9fafe, #7e88c3);
+      @include btnStyle(#f9fafe, #7e88c3, #dfe3fa);
     }
     &:nth-child(2) {
-      @include btnStyle(#ec5757, #fff);
+      @include btnStyle(#ec5757, #fff, #ff9797);
     }
     &:nth-child(3) {
-      @include btnStyle(#7c5dfa, #fff);
+      @include btnStyle(#7c5dfa, #fff, #9277ff);
     }
   }
+}
+
+.cancel {
+  @include btnStyle(#f9fafe, #7e88c3, #dfe3fa);
+}
+
+.save,
+.login_btn {
+  @include btnStyle(#7c5dfa, #fff, #9277ff);
 }

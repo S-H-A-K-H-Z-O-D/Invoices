@@ -1,0 +1,14 @@
+input {
+  background: #ffffff;
+  border: 1px solid #dfe3fa;
+  border-radius: 4px;
+  font-weight: 600;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+label {
+  color: #7e88c3;
+}

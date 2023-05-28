@@ -1,8 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./buttons.scss";
 
 export const Buttons = () => {
   const [list, setList] = useState(false);
+  const addPage = useNavigate();
+
+  const onAdd = () => {
+    addPage("/add-invoice");
+  };
 
   const chooseOption = () => {
     setList(!list);
@@ -35,7 +41,7 @@ export const Buttons = () => {
         ) : null}
       </div>
       <div className="ms-4">
-        <button className="add_btn d-flex align-items-center">
+        <button onClick={onAdd} className="add_btn d-flex align-items-center">
           <div className="el_btn me-3"></div>New invoice
         </button>
       </div>

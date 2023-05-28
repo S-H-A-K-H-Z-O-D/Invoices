@@ -2,23 +2,18 @@ import { useNavigate } from "react-router-dom";
 import "./openInvoiceUp.scss";
 import "../Home/Invoices/invoice.scss";
 import { InvoiceWindow } from "./InvoiceWindow/invoiceWindow";
+import { GoBack } from "../../Components/Goback";
 
 export const OpenInvoiceUp = () => {
-  const goBack = useNavigate();
   const goEdit = useNavigate();
 
   const onEdit = () => {
     goEdit("/edit-invoice");
   };
 
-  const GoBack = () => {
-    goBack(-1);
-  };
   return (
     <>
-      <button className="goBack" onClick={GoBack}>
-        <span className="goBack__icon"></span> Go back
-      </button>
+      <GoBack />
 
       <div className="d-flex align-items-center wrapper">
         <div className="d-flex align-items-center">

@@ -1,0 +1,11 @@
+.form {
+  padding: 60px;
+  background-color: #fff;
+  width: 630px;
+  height: 380px;
+  border-radius: 10px;
+
+  & h3 {
+    font-weight: 600;
+  }
+}

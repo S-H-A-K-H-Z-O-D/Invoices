@@ -1,0 +1,16 @@
+.cover {
+  margin: 80px;
+  margin-top: 0;
+}
+
+.editPage {
+  background-color: #fff;
+  margin-top: 30px;
+  border-radius: 10px;
+  padding: 30px 50px;
+  padding-bottom: 20px;
+
+  & h3 {
+    font-weight: 600;
+  }
+}
