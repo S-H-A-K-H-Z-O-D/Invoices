@@ -4,7 +4,7 @@ import { useAuth } from "./useAuth";
 export const useLoginProps = ({}) => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  let [, setToken] = useAuth();
+  let [, setToken, , setLayout] = useAuth();
 
   const onLogin = (evt) => {
     evt.preventDefault();
@@ -28,7 +28,10 @@ export const useLoginProps = ({}) => {
           return res.json();
         }
       })
-      .then((data) => setToken(data));
+      .then((data) => {
+        setLayout(true);
+        setToken(data);
+      });
   };
   return { onLogin, emailRef, passwordRef };
 };

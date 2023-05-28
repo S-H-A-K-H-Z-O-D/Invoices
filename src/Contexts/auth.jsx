@@ -6,6 +6,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const localToken = JSON.parse(localStorage.getItem("token"));
   const [token, setToken] = useState(localToken);
+  const [layout, setLayout] = useState(true);
 
   useEffect(() => {
     if (token) {
@@ -16,7 +17,7 @@ export const AuthProvider = ({ children }) => {
   }, [token]);
 
   return (
-    <AuthContext.Provider value={{ token, setToken }}>
+    <AuthContext.Provider value={{ token, setToken, layout, setLayout }}>
       {children}
     </AuthContext.Provider>
   );

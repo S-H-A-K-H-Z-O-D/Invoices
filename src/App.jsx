@@ -11,7 +11,7 @@ import {
 } from "./Pages";
 
 function App() {
-  const [token] = useAuth();
+  const [token, , layout, setLayout] = useAuth();
 
   return (
     <>
@@ -24,6 +24,11 @@ function App() {
           <Route path="/delete-invoice" element={<DeleteInvoice />} />
         </Routes>
       </Layout>
+      {!layout ? (
+        <Routes>
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      ) : null}
     </>
   );
 }

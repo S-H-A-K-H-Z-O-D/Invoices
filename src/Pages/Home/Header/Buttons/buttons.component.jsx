@@ -1,13 +1,21 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../../Hooks/useAuth";
 import "./buttons.scss";
 
 export const Buttons = () => {
   const [list, setList] = useState(false);
   const addPage = useNavigate();
+  const [token, , , setLayout] = useAuth();
 
   const onAdd = () => {
-    addPage("/add-invoice");
+    if (token) {
+      setLayout(true);
+      addPage("/add-invoice");
+    } else {
+      setLayout(false);
+      return addPage("/login");
+    }
   };
 
   const chooseOption = () => {
