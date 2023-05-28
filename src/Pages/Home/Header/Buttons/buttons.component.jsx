@@ -6,15 +6,14 @@ import "./buttons.scss";
 export const Buttons = () => {
   const [list, setList] = useState(false);
   const addPage = useNavigate();
-  const [token, , , setLayout] = useAuth();
+  const [token, , , setLayout, , setRunRoute] = useAuth();
 
   const onAdd = () => {
-    if (token) {
-      setLayout(true);
-      addPage("/add-invoice");
-    } else {
+    if (!token) {
+      setRunRoute("/add-invoice");
       setLayout(false);
-      return addPage("/login");
+    } else {
+      return addPage("/add-invoice");
     }
   };
 

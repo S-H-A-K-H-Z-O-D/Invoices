@@ -1,10 +1,13 @@
-import { useRef } from "react";
+import { useEffect } from "react";
+import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "./useAuth";
 
 export const useLoginProps = ({}) => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  let [, setToken, , setLayout] = useAuth();
+  const addPage = useNavigate();
+  let [token, setToken, , setLayout, runRoute] = useAuth();
 
   const onLogin = (evt) => {
     evt.preventDefault();
@@ -29,8 +32,9 @@ export const useLoginProps = ({}) => {
         }
       })
       .then((data) => {
-        setLayout(true);
         setToken(data);
+        setLayout(true);
+        addPage(runRoute);
       });
   };
   return { onLogin, emailRef, passwordRef };

@@ -3,12 +3,31 @@ import "./openInvoiceUp.scss";
 import "../Home/Invoices/invoice.scss";
 import { InvoiceWindow } from "./InvoiceWindow/invoiceWindow";
 import { GoBack } from "../../Components/Goback";
+import { useAuth } from "../../Hooks/useAuth";
 
 export const OpenInvoiceUp = () => {
-  const goEdit = useNavigate();
+  const [token, , , setLayout, , setRunRoute] = useAuth();
+  const goTo = useNavigate();
 
   const onEdit = () => {
-    goEdit("/edit-invoice");
+    if (!token) {
+      setRunRoute("/edit-invoice");
+      setLayout(false);
+    } else goTo("/edit-invoice");
+  };
+
+  const onDelete = () => {
+    if (!token) {
+      setRunRoute("/open-invoice-up");
+      setLayout(false);
+    } else console.log("deleted");
+  };
+
+  const onMark = () => {
+    if (!token) {
+      setRunRoute("/open-invoice-up");
+      setLayout(false);
+    } else console.log("marked");
   };
 
   return (
@@ -23,8 +42,8 @@ export const OpenInvoiceUp = () => {
 
         <div className="wrapper__btns ms-auto">
           <button onClick={onEdit}>Edit</button>
-          <button>Delete</button>
-          <button>Mark as Paid</button>
+          <button onClick={onDelete}>Delete</button>
+          <button onClick={onMark}>Mark as Paid</button>
         </div>
       </div>
 

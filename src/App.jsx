@@ -21,14 +21,9 @@ function App() {
           <Route path="/add-invoice" element={<AddInvoice />} />
           <Route path="/open-invoice-up" element={<OpenInvoiceUp />} />
           <Route path="/edit-invoice" element={<EditInvoice />} />
-          <Route path="/delete-invoice" element={<DeleteInvoice />} />
         </Routes>
       </Layout>
-      {!layout ? (
-        <Routes>
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      ) : null}
+      {!layout ? <Login /> : null}
     </>
   );
 }

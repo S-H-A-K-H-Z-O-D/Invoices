@@ -8,14 +8,17 @@ import { Provider } from "react-redux";
 import { AuthProvider } from "./contexts/auth.jsx";
 
 import { store } from "./store/config-store";
+import { DataProvider } from "./Contexts/data.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <Provider store={store}>
-          <App />
-        </Provider>
+        <DataProvider>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </DataProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
