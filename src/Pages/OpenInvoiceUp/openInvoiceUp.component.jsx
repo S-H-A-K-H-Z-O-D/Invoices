@@ -34,7 +34,19 @@ export const OpenInvoiceUp = () => {
           Authorization: `Bearer ${token.accessToken}`,
           "Content-Type": "application/json",
         },
-      });
+      })
+        .then((res) => res.json())
+        .then(() => {
+          let index = 0;
+          data.find((el, i) => {
+            index = i;
+            return el.id == id;
+          });
+          const undeletedData = data.splice(index, 1);
+          setData(undeletedData);
+          goTo(-1);
+        })
+        .catch((err) => console.log(err));
     }
   };
 
@@ -46,7 +58,7 @@ export const OpenInvoiceUp = () => {
       fetch(`https://invoices-8ehs.onrender.com/invoices/${id}`, {
         method: "PUT",
         body: JSON.stringify({
-          userId: "2",
+          userId: `${token.user.id}`,
           paid: true,
           email: info.email,
           to: info.to,
@@ -59,7 +71,19 @@ export const OpenInvoiceUp = () => {
           Authorization: `Bearer ${token.accessToken}`,
           "Content-Type": "application/json",
         },
-      });
+      })
+        .then((res) => res.json())
+        .then((newData) => {
+          let index = 0;
+          data.find((el, i) => {
+            index = i;
+            return el.id == id;
+          });
+          data[index] = newData;
+          setData(data);
+          setInfo(newData);
+        })
+        .catch((err) => console.log(err));
     }
   };
 

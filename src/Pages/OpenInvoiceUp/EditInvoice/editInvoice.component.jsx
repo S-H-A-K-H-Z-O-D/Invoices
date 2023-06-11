@@ -34,7 +34,7 @@ export const EditInvoice = () => {
       method: "PUT",
       body: JSON.stringify({
         userId: `${token.user.id}`,
-        paid: false,
+        paid: location.state.paid,
         email: emailRef.current.value,
         to: nameRef.current.value,
         dueDate: new Date(),
