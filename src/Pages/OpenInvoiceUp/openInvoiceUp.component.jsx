@@ -11,7 +11,7 @@ export const OpenInvoiceUp = () => {
   console.log(token);
   const [, id, , info] = useData();
   const goTo = useNavigate();
-  console.log(id);
+  console.log(info);
 
   const onEdit = () => {
     if (!token) {
@@ -25,10 +25,11 @@ export const OpenInvoiceUp = () => {
       setRunRoute("/open-invoice-up");
       setLayout(false);
     } else {
-      fetch(`https://invoices-8ehs.onrender.com/invoices`, {
+      fetch(`https://invoices-8ehs.onrender.com/invoices/${id}`, {
         method: "DELETE",
         headers: {
-          authorization: `Bearer ${JSON.stringify(token)}`,
+          Authorization: `Bearer ${token.accessToken}`,
+          "Content-Type": "application/json",
         },
       });
     }
@@ -41,13 +42,19 @@ export const OpenInvoiceUp = () => {
     } else {
       fetch(`https://invoices-8ehs.onrender.com/invoices/${id}`, {
         method: "PUT",
-        Body: JSON.stringify({
-          userId: 2,
+        body: JSON.stringify({
+          userId: "2",
           paid: true,
+          email: info.email,
+          to: info.to,
+          dueDate: new Date(),
+          term: info.term,
+          description: info.description,
+          price: info.price,
         }),
-        Headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${token}`,
+        headers: {
+          Authorization: `Bearer ${token.accessToken}`,
+          "Content-Type": "application/json",
         },
       });
     }

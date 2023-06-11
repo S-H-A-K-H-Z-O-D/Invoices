@@ -11,15 +11,15 @@ import { store } from "./store/config-store";
 import { DataProvider } from "./Contexts/data.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <AuthProvider>
-        <DataProvider>
-          <Provider store={store}>
-            <App />
-          </Provider>
-        </DataProvider>
-      </AuthProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <BrowserRouter>
+    <AuthProvider>
+      <DataProvider>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </DataProvider>
+    </AuthProvider>
+  </BrowserRouter>
+  // </React.StrictMode>
 );

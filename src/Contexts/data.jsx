@@ -8,7 +8,6 @@ export const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [id, setId] = useState(1);
   const [info, setInfo] = useState(null);
-  const [del, setDel] = useState(null);
 
   useEffect(() => {
     fetch("https://invoices-8ehs.onrender.com/invoices")
@@ -17,7 +16,7 @@ export const DataProvider = ({ children }) => {
   }, []);
 
   return (
-    <DataContext.Provider value={{ data, id, setId, info, setInfo }}>
+    <DataContext.Provider value={{ data, id, setId, info, setInfo, setData }}>
       {children}
     </DataContext.Provider>
   );

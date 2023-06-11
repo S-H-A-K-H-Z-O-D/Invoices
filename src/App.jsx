@@ -1,14 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./Components/Layout";
 import { useAuth } from "./Hooks/useAuth";
-import {
-  AddInvoice,
-  DeleteInvoice,
-  EditInvoice,
-  Home,
-  Login,
-  OpenInvoiceUp,
-} from "./Pages";
+import { AddInvoice, EditInvoice, Home, Login, OpenInvoiceUp } from "./Pages";
 
 function App() {
   const [token, , layout, setLayout] = useAuth();
