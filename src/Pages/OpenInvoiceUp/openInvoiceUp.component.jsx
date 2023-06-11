@@ -9,15 +9,18 @@ import { useData } from "../../Hooks/useData";
 export const OpenInvoiceUp = () => {
   const [token, , , setLayout, , setRunRoute] = useAuth();
   console.log(token);
-  const [, id, , info] = useData();
+  const [data, id, , info, setInfo, setData] = useData();
   const goTo = useNavigate();
-  console.log(info);
+  const findInvoice = data.find((el) => el.id == id);
 
   const onEdit = () => {
     if (!token) {
       setRunRoute("/edit-invoice");
       setLayout(false);
-    } else goTo("/edit-invoice");
+    } else
+      goTo("/edit-invoice", {
+        state: findInvoice,
+      });
   };
 
   const onDelete = () => {

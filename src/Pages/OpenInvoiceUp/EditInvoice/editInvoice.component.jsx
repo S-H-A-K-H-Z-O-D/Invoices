@@ -3,8 +3,8 @@ import "../../../Components/InvoiceForm/invoiceForm.scss";
 import "../openInvoiceUp.scss";
 import { GoBack } from "../../../Components/Goback";
 import { Input } from "../../../Components/InvoiceForm";
-import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import { useData } from "../../../Hooks/useData";
 import { useAuth } from "../../../Hooks/useAuth";
 
@@ -12,6 +12,7 @@ export const EditInvoice = () => {
   const [token] = useAuth();
   const [data, id, setId, info, setInfo, setData] = useData();
   const navigate = useNavigate();
+  const location = useLocation();
   const nameRef = useRef();
   const emailRef = useRef();
   const dateRef = useRef();
@@ -19,9 +20,18 @@ export const EditInvoice = () => {
   const jobRef = useRef();
   const priceRef = useRef();
 
+  useEffect(() => {
+    nameRef.current.value = location.state.to;
+    emailRef.current.value = location.state.email;
+    dateRef.current.value = location.state.dueDate;
+    termRef.current.value = location.state.term;
+    jobRef.current.value = location.state.description;
+    priceRef.current.value = location.state.price;
+  }, []);
+
   const onEdit = () => {
-    fetch("https://invoices-8ehs.onrender.com/invoices", {
-      method: "POST",
+    fetch(`https://invoices-8ehs.onrender.com/invoices/${id}`, {
+      method: "PUT",
       body: JSON.stringify({
         userId: `${token.user.id}`,
         paid: false,
@@ -38,8 +48,16 @@ export const EditInvoice = () => {
       },
     })
       .then((res) => res.json())
-      .then((data) => {
+      .then((newData) => {
+        let index = 0;
+        data.find((el, i) => {
+          index = i;
+          return el.id == id;
+        });
+        data[index] = newData;
         setData(data);
+        setInfo(newData);
+        navigate(-1);
       })
       .catch((err) => console.log(err));
   };

@@ -10,13 +10,10 @@ export const Invoices = () => {
 
   const onNavigate = (evt) => {
     setId(evt.target.closest("button").id);
-    fetch(
-      `https://invoices-8ehs.onrender.com/invoices/${
-        evt.target.closest("button").id
-      }`
-    )
-      .then((res) => res.json())
-      .then((data) => setInfo(data));
+    const findInvoice = data.find(
+      (el) => el.id == evt.target.closest("button").id
+    );
+    setInfo(findInvoice);
     goInvoice("/open-invoice-up");
   };
 
