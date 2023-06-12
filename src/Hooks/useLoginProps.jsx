@@ -7,6 +7,7 @@ export const useLoginProps = ({}) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const addPage = useNavigate();
+  const [loader, setLoader] = useState(true);
   let [token, setToken, , setLayout, runRoute] = useAuth();
 
   const onLogin = (evt) => {
@@ -18,7 +19,7 @@ export const useLoginProps = ({}) => {
       email,
       password,
     };
-
+    setLoader(false);
     fetch("https://invoices-8ehs.onrender.com/login", {
       method: "POST",
       headers: {
@@ -35,7 +36,8 @@ export const useLoginProps = ({}) => {
         setToken(data);
         setLayout(true);
         addPage(runRoute);
+        setLoader(true);
       });
   };
-  return { onLogin, emailRef, passwordRef };
+  return { onLogin, emailRef, passwordRef, loader };
 };

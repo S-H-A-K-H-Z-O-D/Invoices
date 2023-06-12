@@ -2,14 +2,16 @@ import { GoBack } from "../../Components/Goback";
 import { Input } from "../../Components/InvoiceForm";
 import "./addInvoice.scss";
 import "../OpenInvoiceUp/openInvoiceUp.scss";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useAuth } from "../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { useData } from "../../Hooks/useData";
+import { BtnLoader } from "../../Components/BtnLoader/btnLoader.component";
 
 export const AddInvoice = () => {
   const [token] = useAuth();
   const [data, , , , , setData] = useData();
+  const [loader, setLoader] = useState(true);
   const navigate = useNavigate();
   const nameRef = useRef();
   const emailRef = useRef();
@@ -19,6 +21,7 @@ export const AddInvoice = () => {
   const priceRef = useRef();
 
   const onAdd = () => {
+    setLoader(false);
     fetch("https://invoices-8ehs.onrender.com/invoices", {
       method: "POST",
       body: JSON.stringify({
@@ -39,6 +42,7 @@ export const AddInvoice = () => {
       .then((res) => res.json())
       .then((newData) => {
         setData([...data, newData]);
+        setLoader(true);
         navigate("/");
       })
       .catch((err) => console.log(err));
@@ -100,7 +104,9 @@ export const AddInvoice = () => {
             Discard
           </button>
           <button onClick={onAdd} className="save">
-            Save & Send
+            <div className="addLoader">
+              {loader ? "Save & Send" : <BtnLoader />}
+            </div>
           </button>
         </div>
       </div>

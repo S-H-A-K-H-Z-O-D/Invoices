@@ -1,3 +1,4 @@
+import { BtnLoader } from "../../Components/BtnLoader/btnLoader.component";
 import "../../Components/InvoiceForm/invoiceForm.scss";
 import { useLoginProps } from "../../Hooks/useLoginProps";
 import { hoc } from "../../Utils/hoc";
@@ -6,7 +7,7 @@ import "./login.scss";
 
 export const Login = hoc(
   useLoginProps,
-  ({ onLogin, emailRef, passwordRef }) => {
+  ({ onLogin, emailRef, passwordRef, loader }) => {
     return (
       <div className="d-flex justify-content-center align-items-center h-100">
         <form onSubmit={onLogin} className="form">
@@ -39,7 +40,11 @@ export const Login = hoc(
           </div>
 
           <div className="d-flex justify-content-end mt-4">
-            <button className="login_btn">Login</button>
+            <button className="login_btn">
+              <div className="loginLoader">
+                {loader ? "Login" : <BtnLoader />}
+              </div>
+            </button>
           </div>
         </form>
       </div>

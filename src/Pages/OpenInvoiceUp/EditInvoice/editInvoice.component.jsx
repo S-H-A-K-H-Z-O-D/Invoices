@@ -4,13 +4,15 @@ import "../openInvoiceUp.scss";
 import { GoBack } from "../../../Components/Goback";
 import { Input } from "../../../Components/InvoiceForm";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useData } from "../../../Hooks/useData";
 import { useAuth } from "../../../Hooks/useAuth";
+import { BtnLoader } from "../../../Components/BtnLoader/btnLoader.component";
 
 export const EditInvoice = () => {
   const [token] = useAuth();
   const [data, id, setId, info, setInfo, setData] = useData();
+  const [loader, setLoader] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
   const nameRef = useRef();
@@ -30,6 +32,7 @@ export const EditInvoice = () => {
   }, []);
 
   const onEdit = () => {
+    setLoader(false);
     fetch(`https://invoices-8ehs.onrender.com/invoices/${id}`, {
       method: "PUT",
       body: JSON.stringify({
@@ -57,6 +60,7 @@ export const EditInvoice = () => {
         data[index] = newData;
         setData(data);
         setInfo(newData);
+        setLoader(true);
         navigate(-1);
       })
       .catch((err) => console.log(err));
@@ -120,7 +124,9 @@ export const EditInvoice = () => {
             Cancel
           </button>
           <button onClick={onEdit} className="save">
-            Save Changes
+            <div className="editLoader">
+              {loader ? "Save Changes" : <BtnLoader />}
+            </div>
           </button>
         </div>
       </div>
