@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/add-invoice" element={<AddInvoice />} />
-          <Route path="/open-invoice-up" element={<OpenInvoiceUp />} />
+          <Route path="/invoice&id/:id" element={<OpenInvoiceUp />} />
           <Route path="/edit-invoice" element={<EditInvoice />} />
         </Routes>
       </Layout>

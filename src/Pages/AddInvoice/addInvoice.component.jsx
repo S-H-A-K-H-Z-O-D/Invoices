@@ -9,7 +9,7 @@ import { useData } from "../../Hooks/useData";
 
 export const AddInvoice = () => {
   const [token] = useAuth();
-  const [data, id, setId, info, setInfo, setData] = useData();
+  const [data, , , , , setData] = useData();
   const navigate = useNavigate();
   const nameRef = useRef();
   const emailRef = useRef();
