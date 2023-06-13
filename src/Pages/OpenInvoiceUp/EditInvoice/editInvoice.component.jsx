@@ -32,6 +32,7 @@ export const EditInvoice = () => {
   }, []);
 
   const onEdit = () => {
+    console.log(location);
     setLoader(false);
     fetch(`https://invoices-8ehs.onrender.com/invoices/${id}`, {
       method: "PUT",
@@ -67,7 +68,7 @@ export const EditInvoice = () => {
   };
 
   const onCancel = () => {
-    navigate("/");
+    navigate(-1);
   };
 
   return (

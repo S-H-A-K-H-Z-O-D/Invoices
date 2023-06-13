@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { BtnLoader } from "../../../Components/BtnLoader/btnLoader.component";
 import { useAuth } from "../../../Hooks/useAuth";
 import { useData } from "../../../Hooks/useData";
@@ -8,6 +10,7 @@ export const Mark = () => {
   const [token, , , setLayout, , setRunRoute] = useAuth();
   const [data, id, setId, info, setInfo, setData] = useData();
   const [loader, setLoader] = useState(true);
+  const location = useLocation();
 
   let index = 0;
   data.find((el, i) => {
@@ -17,9 +20,10 @@ export const Mark = () => {
 
   const onMark = () => {
     if (!token) {
-      setRunRoute("/invoice&id/:id");
+      // setRunRoute("/invoice&id/:id");
       setLayout(false);
     } else {
+      console.log(location);
       setLoader(false);
       fetch(`https://invoices-8ehs.onrender.com/invoices/${id}`, {
         method: "PUT",

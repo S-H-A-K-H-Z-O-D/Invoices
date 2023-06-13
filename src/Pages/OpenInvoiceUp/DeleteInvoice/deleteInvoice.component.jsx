@@ -18,7 +18,7 @@ export const DeleteInvoice = () => {
 
   const onDelete = () => {
     if (!token) {
-      setRunRoute("/open-invoice-up");
+      setRunRoute("/");
       setLayout(false);
     } else {
       setLoader(false);
