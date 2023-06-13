@@ -36,15 +36,15 @@ export const OpenInvoiceUp = () => {
       <div className="d-flex align-items-center wrapper">
         <div className="d-flex align-items-center">
           <p className="name m-0">Status</p>
-          <p className={info?.paid ? "status_paid m-0" : "status_pending m-0"}>
-            {info?.paid ? "Paid" : "Pending"}
+          <p className={info.paid ? "status_paid m-0" : "status_pending m-0"}>
+            {info.paid ? "Paid" : "Pending"}
           </p>
         </div>
 
         <div className="wrapper__btns ms-auto">
           <button onClick={onEdit}>Edit</button>
           <DeleteInvoice />
-          <Mark />
+          {info.paid ? null : <Mark />}
         </div>
       </div>
 

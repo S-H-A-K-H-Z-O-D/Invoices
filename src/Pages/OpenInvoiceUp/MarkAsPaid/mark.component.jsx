@@ -20,7 +20,6 @@ export const Mark = () => {
 
   const onMark = () => {
     if (!token) {
-      // setRunRoute("/invoice&id/:id");
       setLayout(false);
     } else {
       console.log(location);
