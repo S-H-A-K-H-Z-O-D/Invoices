@@ -22,7 +22,7 @@ export const Login = hoc(
               className="py-2 px-3"
               type="text"
               id="email"
-              placeholder="email..."
+              placeholder="fayzulloh123@gmail.com"
             />
           </div>
           <div className="d-flex flex-column mt-3">
@@ -35,7 +35,7 @@ export const Login = hoc(
               className="py-2 px-3"
               type="text"
               id="password"
-              placeholder="password..."
+              placeholder="fayzulloh123"
             />
           </div>
 
