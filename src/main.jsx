@@ -5,10 +5,10 @@ import App from "./App.jsx";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "react-redux";
-import { AuthProvider } from "./contexts/auth.jsx";
+import { AuthProvider } from "./Contexts/auth.jsx";
 
-import { store } from "./store/config-store";
 import { DataProvider } from "./Contexts/data.jsx";
+import {store} from "./store/index.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
